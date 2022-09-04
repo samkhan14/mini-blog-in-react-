@@ -1,0 +1,354 @@
+import React, { Component } from 'react'
+import Newsitem from './Newsitem'
+import Spinner from './Spinner';
+
+export default class News extends Component {
+
+    // articles = [
+    //     {
+    //         "source": {
+    //             "id": null,
+    //             "name": "Android Central"
+    //         },
+    //         "author": "Jerry Hildenbrand",
+    //         "title": "Like it or not, Apple and Google is the mobile duopoly consumers asked for",
+    //         "description": "Governments hate the control Apple and Google have over the mobile market but consumers are the ones who gave it to them.\n\nOxford defines a duopoly as \"a situation in which two suppliers dominate the market for a commodity or service.\" It's also what countrie…",
+    //         "url": "https://www.androidcentral.com/it-or-not-apple-and-google-mobile-duopoly-consumers-asked",
+    //         "urlToImage": "https://www.androidcentral.com/sites/androidcentral.com/files/styles/large/public/article_images/2021/10/google-logo-ipad-mini-6-iphone-13-pro-pixel-5.jpg",
+    //         "publishedAt": "2021-12-25T15:00:02Z",
+    //         "content": "Source: Jerry Hildenbrand / Android Central\r\nOxford defines a duopoly as \"a situation in which two suppliers dominate the market for a commodity or service.\" It's also what countries like the U.K. sa… [+5348 chars]"
+    //     },
+    //     {
+    //         "source": {
+    //             "id": null,
+    //             "name": "MacRumors"
+    //         },
+    //         "author": "Juli Clover",
+    //         "title": "Six Useful Tips for New AirPods Owners",
+    //         "description": "Just get a new set of AirPods for Christmas? If so, we've rounded up a handy list of tips, tricks, and features that you might not know about to get you acquainted with your new earbuds.\n\n\n\n\n\n\n\nFirst, if you are new to AirPods entirely, we have a long list of…",
+    //         "url": "https://www.macrumors.com/guide/six-airpods-tips/",
+    //         "urlToImage": "https://images.macrumors.com/t/NaUWQACOMVPtGPlzuRX3yOGpVtA=/1600x/article-new/2021/11/airpods-3-blue-holiday-2.jpg",
+    //         "publishedAt": "2021-12-25T15:00:00Z",
+    //         "content": "Just get a new set of AirPods for Christmas? If so, we've rounded up a handy list of tips, tricks, and features that you might not know about to get you acquainted with your new earbuds.\r\nFirst, if y… [+6435 chars]"
+    //     },
+    //     {
+    //         "source": {
+    //             "id": null,
+    //             "name": "VentureBeat"
+    //         },
+    //         "author": "Noah Shin",
+    //         "title": "Video games and their communities are influencing the metaverse",
+    //         "description": "To follow the success of the video game industry, tech companies must put maintaining a loyal community at the forefront of their mission.",
+    //         "url": "https://venturebeat.com/2021/12/25/video-games-and-their-communities-are-influencing-the-metaverse/",
+    //         "urlToImage": "https://venturebeat.com/wp-content/uploads/2021/12/GettyImages-740520775.jpg?w=1200&strip=all",
+    //         "publishedAt": "2021-12-25T14:40:29Z",
+    //         "content": "Hear from CIOs, CTOs, and other C-level and senior execs on data and AI strategies at the Future of Work Summit this January 12, 2022.Learn more\r\nThis article was contributed by Noah Shin. \r\nFull dis… [+10533 chars]"
+    //     },
+    //     {
+    //         "source": {
+    //             "id": "the-next-web",
+    //             "name": "The Next Web"
+    //         },
+    //         "author": "Napier Lopez",
+    //         "title": "Whoever invented USB-C deserves a Nobel Prize",
+    //         "description": "We tech reporters like to complain about tech a lot. Whether it’s the invasion of our privacy, worrisome use of AI, or the death of the headphone jack, we can be a fussy bunch. But as I emptied out boxes of old tech gear to start the new year fresh, I couldn’…",
+    //         "url": "https://thenextweb.com/news/whoever-invented-usb-c-deserves-a-nobel-prize",
+    //         "urlToImage": "https://img-cdn.tnwcdn.com/image/plugged?filter_last=1&fit=1280%2C640&url=https%3A%2F%2Fcdn0.tnwcdn.com%2Fwp-content%2Fblogs.dir%2F1%2Ffiles%2F2021%2F12%2FUSB-C-Nobel-Prize-copy.jpg&signature=a30aa09170dc5922e468e025f43111bc",
+    //         "publishedAt": "2021-12-25T16:00:38Z",
+    //         "content": "We tech reporters like to complain about tech a lot. Whether its the invasion of our privacy, worrisome use of AI, or the death of the headphone jack, we can be a fussy bunch. But as I emptied out bo… [+3948 chars]"
+    //     },
+    //     {
+    //         "source": {
+    //             "id": null,
+    //             "name": "Xataka.com"
+    //         },
+    //         "author": "Yúbal Fernández",
+    //         "title": "Apps para estrenar tu Android: las 24 imprescindibles para empezar a exprimir tu teléfono",
+    //         "description": "Te traemos una pequeña recopilación con las 24 aplicaciones imprescindibles para Android, esas que recomendamos probar si acabas de comprar tu primer Android o has conseguido un móvil más capaz después de años con uno más antiguo. En Xataka Basics ya tienes u…",
+    //         "url": "https://www.xataka.com/basics/apps-para-estrenar-tu-android-24-imprescindibles-para-empezar-a-exprimir-tu-telefono",
+    //         "urlToImage": "https://i.blogs.es/5288f4/appls/840_560.jpg",
+    //         "publishedAt": "2021-12-25T11:00:51Z",
+    //         "content": "Te traemos una pequeña recopilación con las 24 aplicaciones imprescindibles para Android, esas que recomendamos probar si acabas de comprar tu primer Android o has conseguido un móvil más capaz despu… [+17660 chars]"
+    //     },
+    //     {
+    //         "source": {
+    //             "id": null,
+    //             "name": "Xataka.com"
+    //         },
+    //         "author": "Eva Rodríguez de Luis",
+    //         "title": "Más tiempo en familia: 23 ideas para divertirse en la sobremesa en Navidad",
+    //         "description": "La Navidad es tiempo de estar con seres queridos: cenas, comilonas y largas sobremesas al calor de una buena conversación y risas. Si en estas fiestas te vas a juntar con los tuyos, además de la clásica \"diferencia de opiniones\" con tu cuñado, en este artícul…",
+    //         "url": "https://www.xataka.com/seleccion/tiempo-familia-23-ideas-para-divertirse-sobremesa-navidad",
+    //         "urlToImage": "https://i.blogs.es/7a8402/jonathan-borba-vcx5ahbwk6s-unsplash/840_560.jpg",
+    //         "publishedAt": "2021-12-25T16:35:41Z",
+    //         "content": "La Navidad es tiempo de estar con seres queridos: cenas, comilonas y largas sobremesas al calor de una buena conversación y risas. Si en estas fiestas te vas a juntar con los tuyos, además de la clás… [+9986 chars]"
+    //     },
+    //     {
+    //         "source": {
+    //             "id": null,
+    //             "name": "9to5Mac"
+    //         },
+    //         "author": "Bradley Chambers",
+    //         "title": "Get a new Mac for Christmas? Here are a few essential tips to become a power user",
+    //         "description": "If you opened up a brand new Mac for Christmas, you’ll likely be spending some time setting it up. Apple has done a great job of helping customers get their brand-new Macs up and running, but there are some tips and tricks to take it a step further. As you se…",
+    //         "url": "https://9to5mac.com/2021/12/25/get-a-new-mac-for-christmas-here-are-a-few-essential-tips-to-become-a-power-user/",
+    //         "urlToImage": "https://i1.wp.com/9to5mac.com/wp-content/uploads/sites/6/2021/12/apple-setup-unbox.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+    //         "publishedAt": "2021-12-25T14:00:00Z",
+    //         "content": "If you opened up a brand new Mac for Christmas, youll likely be spending some time setting it up. Apple has done a great job of helping customers get their brand-new Macs up and running, but there ar… [+3364 chars]"
+    //     },
+    //     {
+    //         "source": {
+    //             "id": null,
+    //             "name": "9to5Mac"
+    //         },
+    //         "author": "Bradley Chambers",
+    //         "title": "The best apps to unlock the full potential of your new Mac",
+    //         "description": "If you got a new Mac for Christmas, you’re likely wondering what some essential apps to take your macOS experience up another level are. Although Apple includes some great apps built into macOS, several 3rd party options are worth checking out.\n more…\nThe pos…",
+    //         "url": "https://9to5mac.com/2021/12/25/the-best-mac-apps-to-unlock-the-full-potential-of-your-new-mac/",
+    //         "urlToImage": "https://i2.wp.com/9to5mac.com/wp-content/uploads/sites/6/2021/10/macOS-monterey.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+    //         "publishedAt": "2021-12-25T15:00:00Z",
+    //         "content": "If you got a new Mac for Christmas, you’re likely wondering what some essential apps to take your macOS experience up another level are. Although Apple includes some great apps built into macOS, seve… [+4111 chars]"
+    //     },
+    //     {
+    //         "source": {
+    //             "id": null,
+    //             "name": "9to5Mac"
+    //         },
+    //         "author": "Sponsored Post",
+    //         "title": "The #1 most-wished-for iPad case on Amazon from ZUGU launches for 10.2-inch iPads",
+    //         "description": "On the heels of a series of new releases, Zugu has unveiled its latest installment: the iPad 10.2 Case for 7th, 8th, and 9th generation iPad models on Amazon. Much like the brand’s other top-rated cases— backed by more than 50,000 reviews, an average 5-star r…",
+    //         "url": "https://9to5mac.com/2021/12/25/zugu-10-2-ipad-case/",
+    //         "urlToImage": "https://i1.wp.com/9to5mac.com/wp-content/uploads/sites/6/2021/10/zugu-ipad-10-2-case-9to5mac-1.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+    //         "publishedAt": "2021-12-25T21:52:31Z",
+    //         "content": "On the heels of a series of new releases, Zugu has unveiled its latest installment: the iPad 10.2 Case for 7th, 8th, and 9th generation iPad models at zugu.com and on Amazon. Much like the brands oth… [+2813 chars]"
+    //     },
+    //     {
+    //         "source": {
+    //             "id": null,
+    //             "name": "9to5Mac"
+    //         },
+    //         "author": "Filipe Espósito",
+    //         "title": "Here are some of the best apps for shooting and editing video on iPhone",
+    //         "description": "iPhone has become the primary camera of many people around the world – not only because of its quality, but also because of the great apps available on the App Store. This year we’ve made a list of the best apps for shooting and editing video on iPhone.\n more…",
+    //         "url": "https://9to5mac.com/2021/12/25/here-are-some-of-the-best-apps-for-shooting-and-editing-video-on-iphone/",
+    //         "urlToImage": "https://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2021/12/iPhone-13-Pro-camera-1.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+    //         "publishedAt": "2021-12-25T16:00:00Z",
+    //         "content": "iPhone has become the primary camera of many people around the world not only because of its quality, but also because of the great apps available on the App Store. This year we’ve made a list of the… [+4632 chars]"
+    //     },
+    //     {
+    //         "source": {
+    //             "id": null,
+    //             "name": "9to5Mac"
+    //         },
+    //         "author": "Justin Kahn",
+    //         "title": "How to buy crypto on iPhone the easy way",
+    //         "description": "Learning how to buy crypto isn’t easy but Crypto.com has truly arrived stateside and has certainly become a viable option for getting into the cryptocurrency game on iPhone. As the bright red letters adorning the house of LeBron get pulled down and carried aw…",
+    //         "url": "https://9to5mac.com/2021/12/25/how-to-buy-crypto-ios/",
+    //         "urlToImage": "https://i2.wp.com/9to5mac.com/wp-content/uploads/sites/6/2021/12/Crypto.com-iOS-app-hero.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+    //         "publishedAt": "2021-12-25T14:30:00Z",
+    //         "content": "Learning how to buy crypto isn’t easy but Crypto.com has truly arrived stateside and has certainly become a viable option for getting into the cryptocurrency game on iPhone. As the bright red letters… [+5917 chars]"
+    //     },
+    //     {
+    //         "source": {
+    //             "id": null,
+    //             "name": "Lifehacker.jp"
+    //         },
+    //         "author": "春野ユリ",
+    //         "title": "iPhoneからAndroidに機種変するときの注意点",
+    //         "description": "Appleの場合、ハードウエアと基礎的なソフトウエアを自社で作っているということです。しかし、Androidは通常は違います。GoogleはAndroid OSを開発していますが、それ以外の機能は、各スマホのメーカーに委ねられています。",
+    //         "url": "https://www.lifehacker.jp/2021/12/make-switching-from-iphone-to-android-suck-less-and-vi.html",
+    //         "urlToImage": "https://assets.media-platform.com/lifehacker/dist/images/2021/12/13/af9da71b7fa57b331826e70e37ed2f20-w960.jpg",
+    //         "publishedAt": "2021-12-25T11:00:00Z",
+    //         "content": "AppleAndroidAndroidAppleOS\r\niOSAndroidAndroidiPhone\r\niPhoneiPhoneAndroid\r\niMessage\r\nAndroidRCSRCSSMS\r\nWifi\r\nRCSGoogle\r\nPixelAndroid\r\niPhoneSMS11\r\nSMSiMessage\r\nAndroidiPhoneAppleUI\r\n2021Apple\r\nAndroid… [+580 chars]"
+    //     },
+    //     {
+    //         "source": {
+    //             "id": "spiegel-online",
+    //             "name": "Spiegel Online"
+    //         },
+    //         "author": "Matthias Kremp",
+    //         "title": "iPhone neu einrichten: Die elf besten Tipps zum Start",
+    //         "description": "Unterm Tannenbaum lag ein neues iPhone? Dann haben Sie jetzt ein paar Dinge zu tun.\nUnser Smartphone-Experte Matthias Kremp erklärt, welche Einstellungen er zuerst ändert.",
+    //         "url": "https://www.spiegel.de/netzwelt/gadgets/iphone-neu-einrichten-die-elf-besten-tipps-zum-start-a-83d4fbff-f79d-4909-bfab-3c373ce3e038",
+    //         "urlToImage": "https://cdn.prod.www.spiegel.de/images/07837580-83bb-45af-be95-7f0d3e7b7d5a_w1280_r1.77_fpx40_fpy57.jpg",
+    //         "publishedAt": "2021-12-25T14:45:04Z",
+    //         "content": "Android-Tipps\r\nSie haben kein iPhone, sondern ein Android-Smartphone geschenkt bekommen? Kein Problem, auch für Android-Einsteiger haben wir hilfreiche Tipps zusammengestellt.\r\n1. »Mein iPhone suchen… [+7863 chars]"
+    //     },
+    //     {
+    //         "source": {
+    //             "id": null,
+    //             "name": "AppleInsider"
+    //         },
+    //         "author": "news@appleinsider.com (Christine McKee)",
+    //         "title": "Year-end Apple deals: 2021 MacBook Pro sale, MacBook Air $200 off, Mac mini $150 off, more",
+    //         "description": "After-Christmas deals are hitting Apple products — and even new 2021 14-inch and 16-inch MacBook Pros are heavily discounted. Save up to $300 on retail and upgraded configs with our exclusive promo code, plus up to $80 off AppleCare.End-of-year Mac deals\r\nBus…",
+    //         "url": "https://appleinsider.com/articles/21/12/25/year-end-apple-deals-2021-macbook-pro-sale-macbook-air-200-off-mac-mini-150-off-more",
+    //         "urlToImage": "https://photos5.appleinsider.com/gallery/46250-90099-apple-blowout-deals-dec-xl.jpg",
+    //         "publishedAt": "2021-12-25T23:14:00Z",
+    //         "content": "AppleInsider is supported by its audience and may earn commission as an Amazon Associate and affiliate partner on qualifying purchases. These affiliate partnerships do not influence our editorial con… [+5010 chars]"
+    //     },
+    //     {
+    //         "source": {
+    //             "id": null,
+    //             "name": "Gizmodo.jp"
+    //         },
+    //         "author": "福田ミホ",
+    //         "title": "Oura Ring 3があればApple Watch要らない？ 何ができて何ができないか",
+    //         "description": "指輪型のスマートリング「Oura Ring 3」を、ギズモードのライターが購入。Apple Watchと比べてどうなのかレビューしました。Apple Watchの代わりとして使えるでしょうか？",
+    //         "url": "https://www.gizmodo.jp/2021/12/oura-ring-3-review.html",
+    //         "urlToImage": "https://assets.media-platform.com/gizmodo/dist/images/2021/12/20/211219_ouraring3aw8-w960.jpg",
+    //         "publishedAt": "2021-12-25T12:00:00Z",
+    //         "content": "Oura3Oura Ring 3 Oura RingOura Ring 3\r\nApple WatchOura Ring 3Oura Ring 3iPhoneOuraiPhone\r\nOura Ring 3Oura Ring 3Apple Watch\r\nOura Ring 3\r\nOura Ring 3Oura Ring 3\r\n2022Web\r\n2993400039945000Web6.99800\r\n… [+1098 chars]"
+    //     },
+    //     {
+    //         "source": {
+    //             "id": null,
+    //             "name": "Lifehacker.jp"
+    //         },
+    //         "author": "的野裕子",
+    //         "title": "iPhoneの｢コピー＆ペースト｣より便利な｢ドラッグ＆ドロップ｣のやり方",
+    //         "description": "Image:Shutterstockライフハッカー［日本版］2021年12月8日掲載の記事より転載ドラッグ＆ドロップは、実質的にすべてのデバイスで使える基本機能です。ただ、iPhoneでは、iOS15になるまでホーム画面と特定のアプリ内でしか使えませんでした。iOS15のリリースから、AppleはiPhoneのアプリからアプリへと、テキスト、ファイル、画像、ドキュメントをドラッグ＆ドロップができる",
+    //         "url": "https://www.lifehacker.jp/2021/12/how-to-use-drag-and-drop-iphone.html",
+    //         "urlToImage": "https://assets.media-platform.com/gizmodo/dist/images/2021/12/24/shutterstock_1827476900-w960.jpg",
+    //         "publishedAt": "2021-12-25T05:30:00Z",
+    //         "content": "2021128\r\niPhoneiOS 15\r\niOS 15AppleiPhone\r\niPhone\r\niPad2017iPhone2021iOS 15iPhoneiOS 15\r\niPhone\r\nSafari\r\nFacebookSlackViber\r\n2\r\n1. \r\n2. \r\n3. \r\n4. \r\neBook\r\niPhone\r\n Source: iDeviceHelp\r\n Original Artic… [+80 chars]"
+    //     },
+    //     {
+    //         "source": {
+    //             "id": null,
+    //             "name": "Yanko Design"
+    //         },
+    //         "author": "Peter Lyon",
+    //         "title": "Mercedes Benz A250e plug-in Hybrid Review",
+    //         "description": "Mercedes Benz A250e plug-in Hybrid ReviewWithout anyone paying too much attention, Mercedes Benz has taken a significant lead over its main rivals in the plug-in hybrid (PHEV) genre. In contrast...",
+    //         "url": "https://www.yankodesign.com/2021/12/24/mercedes-benz-a250e-plug-in-hybrid-review/",
+    //         "urlToImage": "https://www.yankodesign.com/images/design_news/2021/12/mercedes-benz-a250e-plug-in-hybrid-sedan-review/2022_Mercedes_Benz_A250e_Review_yankodesign_hero.jpg",
+    //         "publishedAt": "2021-12-25T02:04:27Z",
+    //         "content": "PROS:\r\n<ul><li>Boasts 44 miles of electric-only driving</li><li>MBUX infotainment system is talented and fun to use</li><li>Has the best cabin in its class</li></ul>\r\nCONS:\r\n<ul><li>Gasoline engine l… [+11506 chars]"
+    //     },
+    //     {
+    //         "source": {
+    //             "id": "engadget",
+    //             "name": "Engadget"
+    //         },
+    //         "author": "砂流恵介(Keisuke Sunagare)",
+    //         "title": "もう、第6世代のiPad miniなしじゃ無理｜ベストバイ2021",
+    //         "description": "2021年に買ったものの中でも、気に入って毎日欠かさず使っているのが第6世代のiPad miniです｡僕の手元に来たのは11月初旬なので､使い始めて1ヶ月半くらい｡間違いなく2021年のベストバイのひとつです｡",
+    //         "url": "https://japanese.engadget.com/ipadmini-060020995.html",
+    //         "urlToImage": "https://s.yimg.com/os/creatr-uploaded-images/2021-12/423aaca0-618c-11ec-bbf7-431fe141d777",
+    //         "publishedAt": "2021-12-25T06:00:20Z",
+    //         "content": "20216iPad mini1112021\r\niPad pro 11iPad pro 1164GBWi-Fi\r\niPad pro 11\r\niPad miniiPad\r\niPadiPad pro 1170020\r\nHHKB(Happy Hacking Keyboard)Luma Fusion3\r\niPad pro 11\r\n6iPad mini\r\niPad mini\r\nKindle\r\nApple P… [+276 chars]"
+    //     },
+    //     {
+    //         "source": {
+    //             "id": null,
+    //             "name": "Journal du geek"
+    //         },
+    //         "author": "Olivier",
+    //         "title": "Le casque de réalité augmentée d’Apple finalement pour la fin de l’année prochaine ?",
+    //         "description": "C'est l'année prochaine qu'Apple devrait enfin dévoiler son premier casque de réalité augmentée ! Un événement attendu de longue date, mais qui pourrait être victime des difficultés d'approvisionnement actuelles.\nLe casque de réalité augmentée d’Apple finalem…",
+    //         "url": "https://www.journaldugeek.com/2021/12/25/le-casque-de-realite-augmentee-dapple-finalement-pour-la-fin-de-lannee-prochaine/",
+    //         "urlToImage": "https://www.journaldugeek.com/content/uploads/2021/12/apple-2.jpg",
+    //         "publishedAt": "2021-12-25T17:00:54Z",
+    //         "content": "C'est l'année prochaine qu'Apple devrait enfin dévoiler son premier casque de réalité augmentée ! Un événement attendu de longue date, mais qui pourrait être victime des difficultés d'approvisionneme… [+1537 chars]"
+    //     },
+    //     {
+    //         "source": {
+    //             "id": null,
+    //             "name": "Journal du geek"
+    //         },
+    //         "author": "Olivier",
+    //         "title": "L’iPod shuffle de nouveau à la mode grâce à cette vidéo TikTok",
+    //         "description": "L'iPod shuffle va-t-il revenir à la mode ? Cela fait bien longtemps qu'Apple ne vend plus son petit baladeur sans écran ! Une vidéo virale sur TikTok le remet en pleine lumière, mais pas pour sa fonction musicale.\nL’iPod shuffle de nouveau à la mode grâce à c…",
+    //         "url": "https://www.journaldugeek.com/2021/12/25/lipod-shuffle-de-nouveau-a-la-mode-grace-a-cette-video-tiktok/",
+    //         "urlToImage": "https://www.journaldugeek.com/content/uploads/2021/12/ipod.jpg",
+    //         "publishedAt": "2021-12-25T13:00:23Z",
+    //         "content": "L'iPod shuffle va-t-il revenir à la mode ? Cela fait bien longtemps qu'Apple ne vend plus son petit baladeur sans écran ! Une vidéo virale sur TikTok le remet en pleine lumière, mais pas pour sa fonc… [+1638 chars]"
+    //     }
+    // ]
+
+
+    constructor() {
+        super();
+        this.state = {
+            articles: [],
+            page: 1,
+            loading: false,
+        }
+    }
+
+
+    // method for fetch data from api
+    async updateNews() {
+        let apiUrl = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=b77218a7b3f64ce69e8ed042409f05c6&page=1&pageSize=${this.props.pageSize}`;
+        let data = await fetch(apiUrl)
+        let parsdata = await data.json()
+        console.log(parsdata)
+        this.setState({
+            articles: parsdata.articles, totalResults: parsdata.totalResults
+        })
+    }
+
+    async componentDidMount() {
+        this.updateNews()
+    }
+
+    handleNextClick = async () => {
+        if (this.state.page + 1 > Math.ceil(this.state.totalResults/20)) {
+
+        }
+        else {
+            let apiUrl = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=b77218a7b3f64ce69e8ed042409f05c6&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
+            this.setState({loading:true})
+            let data = await fetch(apiUrl)
+            let parsdata = await data.json()
+            console.log(parsdata)
+            this.setState({
+                page: this.state.page + 1,
+                articles: parsdata.articles,
+                loading:false
+
+            })
+        }
+
+    }
+
+
+    handlePrevClick = async () => {
+        let apiUrl = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=b77218a7b3f64ce69e8ed042409f05c6&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
+        this.setState({loading:true})
+        let data = await fetch(apiUrl)
+        let parsdata = await data.json()
+        console.log(parsdata)
+        this.setState({
+            page: this.state.page - 1,
+            articles: parsdata.articles,
+            loading:false
+        })
+    }
+
+
+    render() {
+        return (
+            <div>
+                <div className="container">
+                    {this.state.loading && <Spinner />}
+                    <h1 className='text-center my-5'>Our Media News</h1>
+                    <div className="row mb-5">
+                        {this.state.articles.map((element) => {
+                            return <div className="col-md-4" key={element.url}>
+                                <Newsitem title={element.title ? element.title.slice(0, 45) : ""} description={element.description ? element.description.slice(0, 88) : ""} imgUrl={element.urlToImage} newsurl={element.url} />
+                            </div>
+                        })}
+
+                    </div>
+
+                    <div className="container d-flex justify-content-between my-5">
+                        <button disabled={this.state.page <= 1} type="button" className="btn btn-dark" onClick={this.handlePrevClick}>&larr; Prev</button>
+                        <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults/20)} type="button" className="btn btn-dark" onClick={this.handleNextClick}>&rarr; Next</button>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
